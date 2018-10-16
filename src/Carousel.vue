@@ -1,5 +1,5 @@
 <template>
-    <div :id="elementHandle" :class="['owl-carousel', 'owl-theme']">
+    <div :id="elementHandle" :class="['owl-carousel', 'owl-theme', customClass]">
         <slot></slot>
     </div>
 </template>
@@ -16,6 +16,9 @@
           }
       },
       props: {
+          customClass: {
+              default: ''
+          },
         items : {
             default: 3
         },
@@ -72,7 +75,31 @@
         },
         responsive: {
             default: {}
-        }
+        },
+        dotsClass: {
+            default: 'owl-dots'
+        },
+        dotClass: {
+            default: 'owl-dot'
+        },
+        navContainerClass: {
+            default: 'owl-nav'
+        },
+        navClass: {
+            default: ['owl-prev','owl-next']
+        },
+        autoHeightClass: {
+            default: 'owl-height'
+        },
+        responsiveClass: {
+            default: false
+        },
+        loadingClass: {
+            default: 'owl-loading'
+        },
+        loadedClass: {
+            default: 'owl-loaded'
+        },
       },
       
       mounted : function() {
@@ -93,9 +120,16 @@
             autoWidth     : this.autoWidth,
             autoHeight     : this.autoHeight,
             dots     : this.dots,
+            dotsClass: this.dotsClass,
+            dotClass: this.dotClass,
+            navContainer: this.navContainer,
+            navClass: this.navClass,
             autoplayTimeout     : this.autoplayTimeout,
             autoplayHoverPause     : this.autoplayHoverPause,
-            responsive     : this.responsive
+            responsive     : this.responsive,
+            responsiveClass: this.responsiveClass,
+            loadingClass: this.loadingClass,
+            loadedClass: this.loadedClass
         });
       }
   }
